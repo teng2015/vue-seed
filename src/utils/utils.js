@@ -1,14 +1,17 @@
-import x, {compose, partial} from 'kit-utils';
+import x, {
+    compose,
+    partial
+} from 'kit-utils';
 import isObject from 'lodash/isObject';
 import isArray from 'lodash/isArray';
 
 export const page_data = (data) => (obj) => {
     return {
         ...obj,
-        total       : data.total,
-        page        : data.page,
-        page_size   : data.pagesize,
-        page_total  : Math.ceil(data.total / data.pagesize)
+        total: data.total,
+        page: data.page,
+        page_size: data.pagesize,
+        page_total: Math.ceil(data.total / data.pagesize)
     };
 }
 
@@ -72,4 +75,23 @@ export const encode_html = (text) => {
         [/>/g, '&gt;'],
         // [/&/g, '&amp;']
     ]);
+};
+
+export const get_cookie = (c_name) => {
+    if (document.cookie.length > 0) {
+        let c_start = document.cookie.indexOf(c_name + "=");
+        if (c_start !== -1) {
+            c_start = c_start + c_name.length + 1;
+            let c_end = document.cookie.indexOf(';', c_start);
+            if (c_end === -1) c_end = document.cookie.length;
+            return unescape(document.cookie.substring(c_start, c_end));
+        }
+    }
+    return '';
+};
+
+export const set_cookie = (c_name, value, expiredays) => {
+    let exdate = new Date();
+    exdate.setDate(exdate.getDate() + expiredays);
+    document.cookie = c_name + "=" + escape(value) + ((expiredays === null) ? "" : ";expires=" + exdate.toGMTString());
 };

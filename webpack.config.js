@@ -1,26 +1,44 @@
 module.exports = {
-    entry: "./src/app.js",
+    entry: "./src/main.js",
     output: {
-        path: "./public/javascripts",
-        publicPath: "/javascripts/",
-        filename: "build.js"
+        path: "./public/js",
+        publicPath: "/js/",
+        filename: "bundle.js"
     },
     module: {
         loaders: [{
-                test: /\.json$/,
-                loader: "json-loader"
-            }, {
-                test: /\.styl$/,
-                loader: "style!css!stylus"
-            }, {
-                test: /\.html$/,
-                loader: "html"
-            }, {
-                test: /\.js[x]?$/,
-                exclude: /node_modules/,
-                loader: 'babel?presets[]=stage-0&presets[]=es2015&plugins[]=transform-object-assign'
-            }
-        ]
+            test: /\.vue$/,
+            loader: 'vue'
+        }, {
+            test: /\.json$/,
+            loader: "json-loader"
+        }, {
+            test: /\.styl$/,
+            loader: "style!css!stylus"
+        }, {
+            test: /\.html$/,
+            loader: "html"
+        }, {
+            test: /\.less$/,
+            loader: "style!css!less"
+        }, {
+            test: /\.js$/,
+            loader: 'babel?presets[]=stage-0&presets[]=es2015&plugins[]=transform-object-assign',
+            exclude: /node_modules/
+        }]
+    },
+    babel: {
+        presets: ['es2015'],
+        plugins: ['transform-runtime']
+    },
+    resolve: {
+        // require时省略的扩展名，如：require('module') 不需要module.js
+        extensions: ['', '.js', '.vue'],
+        // 别名，可以直接使用别名来代表设定的路径以及其他
+        // alias: {
+        //     filter: path.join(__dirname, './src/filters'),
+        //     components: path.join(__dirname, './src/components')
+        // }
     },
     devServer: {
         proxy: {
@@ -31,13 +49,5 @@ module.exports = {
             }
         }
     },
-
-    // node: {
-    //     fs: 'empty',
-    //     net: 'empty',
-    //     tls: 'empty'
-    // }
-
-
-    // target: 'node'
+    devtool: 'eval-source-map'
 }
