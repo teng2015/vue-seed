@@ -15,6 +15,7 @@
     .left-nav {
         width: 200px;
         height: 100%;
+        float: left;
         overflow: hidden;
         background-color: #F5F5F5;
         .item-list {

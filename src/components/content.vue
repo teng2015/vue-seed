@@ -1,9 +1,11 @@
 <template>
-    <div class="content"></div>
+    <div class="content">
+        <class-list></classes-table>
+    </div>
 </template>
 
 <style lang="less" rel="stylesheet/less">
-    .app-content {
+    .content {
         position: relative;
         overflow: scroll;
         height: 100%;
@@ -12,9 +14,15 @@
 </style>
 
 <script>
+    import Vue from 'vue';
+    import ClassList from './class_list';
+
     export default {
         data () {
-            return {}
+            return {};
+        },
+        components: {
+            'class-list': ClassList
         }
     };
 </script>

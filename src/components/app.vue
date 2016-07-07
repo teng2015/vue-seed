@@ -38,7 +38,7 @@
         },
         ready: function () {
             var self = this;
-            au.getUser("qiao_yixuan")
+            au.getUser(u.get_cookie("app_username"))
             .then(ret => {
                 self.setUser(ret.data);
                 self.user = ret.data;
