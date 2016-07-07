@@ -2,7 +2,7 @@
     <div class='app-header'>
         <span class='app-header-title'>Class Selector</span>
         <div class='app-greet pull-right mr20'>
-            <span>Welcome, {{userName || "Student"}} {{time}}</span>
+            <span>Welcome, {{user.username || "Student"}} {{time}}</span>
         </div>
     </div>
 </template>
@@ -15,7 +15,7 @@
         border-bottom: 1px solid #e5e5e5;
         background-color: rgba(43,44,46,0.95);
         color: #FAFAFA;
-        
+
         .app-header-title {
             font-size: 16px;
             line-height: 50px;
@@ -35,10 +35,11 @@
         let date = new Date(),
             h = date.getHours(),
             m = date.getMinutes()
-        return (h < 10 ? ('0' + h) : h) + ':' + (m < 10 ? ('0' + m) : m)
+        return (h < 10 ? ('0' + h) : h) + ':' + (m < 10 ? ('0' + m) : m);
     };
 
     export default {
+        props: ['user'],
         data: function () {
             return {
                 time: getTime()

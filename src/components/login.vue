@@ -26,7 +26,7 @@
 </style>
 
 <script>
-    import request from '../utils/ajax';
+    import aa from '../api/auth';
     import * as u from '../utils/utils';
 
     export default {
@@ -42,22 +42,13 @@
                 let self = this,
                     {username, password} = this;
 
-                request.post('/login', {
-                    data: {
-                        username,
-                        password
-                    }
-                }).then(ret => {
+                aa.login(username, password).then(ret => {
 
                     if (ret.result) {
                         u.set_cookie('app_username', ret.data.id);
 
-                        request.get(`/getUser/${ret.data.id}`)
-                        .then(ret => {
-                            console.log(ret);
-                            self.$route.router.go('app');
-                        });
-                        
+                        self.$route.router.go('app');
+
                     } else {
                         alert(ret.msg);
                     }

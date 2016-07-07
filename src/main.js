@@ -15,7 +15,7 @@ require('../public/css/base.less');
 Vue.use(VueRouter);
 Vue.config.debug = true;
 
-var App    = Vue.extend({});
+var App    = Vue.extend({ store });
 var router = new VueRouter();
 
 var routersMap = {
