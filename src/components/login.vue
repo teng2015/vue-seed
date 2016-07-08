@@ -4,8 +4,8 @@
         <div class="panel-body">
             <form>
                 <div class='form-group'>
-                    <label>用户名</label>
-                    <input type='text' ref='username' class='form-control' v-model="username"/>
+                    <label>用户账号</label>
+                    <input type='text' ref='userid' class='form-control' v-model="userid"/>
                 </div>
                 <div class='form-group'>
                     <label>密码</label>
@@ -32,7 +32,7 @@
     export default {
         data () {
             return {
-                username: '',
+                userid: '',
                 password: ''
             };
         },
@@ -40,12 +40,12 @@
             onSubmit: function() {
 
                 let self = this,
-                    {username, password} = this;
+                    {userid, password} = this;
 
-                aa.login(username, password).then(ret => {
+                aa.login(userid, password).then(ret => {
 
                     if (ret.result) {
-                        u.set_cookie('app_username', ret.data.id);
+                        u.set_cookie('class_selector_userid', ret.data.id);
 
                         self.$route.router.go('app');
 

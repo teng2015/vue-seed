@@ -22,12 +22,15 @@
     import store from '../vuex/store';
     import au from '../api/user';
     import {setUser} from '../vuex/actions';
+    // import {getUser} from '../vuex/getters';
 
     export default {
+        store,
         vuex: {
-            actions: { setUser }
+            actions: { setUser },
+            // getters: { getUser }
         },
-        data: function () {
+        data () {
             return {
                 user: {}
             };
@@ -36,9 +39,9 @@
             'app-header': require('./header'),
             'app-main': require('./index')
         },
-        ready: function () {
+        ready () {
             var self = this;
-            au.getUser(u.get_cookie("app_username"))
+            au.getUser(u.get_cookie("class_selector_userid"))
             .then(ret => {
                 self.setUser(ret.data);
                 self.user = ret.data;

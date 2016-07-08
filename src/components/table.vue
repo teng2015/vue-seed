@@ -17,17 +17,14 @@
                 </td>
                 <td>
                     <operation-buttons
-                    :item = "item"
-                    :list = "list"
-                    :index = "$index"></operation-buttons>
+                        :item = "item"
+                        :list = "list"
+                        :index = "$index"></operation-buttons>
                 </td>
             </tr>
         </tbody>
     </table>
 </template>
-
-<style>
-</style>
 
 <script>
     import Vue from 'vue';

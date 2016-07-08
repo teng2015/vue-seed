@@ -1,13 +1,11 @@
-import {
-    SET_USER
-} from '../mutation-types';
+import * as types from '../mutation-types';
 
-const state = {
-    user: null
+var state = {
+    user: {}
 };
 
 const mutations = {
-    [SET_USER] (state, user) {
+    SET_USER (state, user) {
         state.user = user;
     }
 };

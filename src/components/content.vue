@@ -10,6 +10,7 @@
         overflow: scroll;
         height: 100%;
         background: #fff;
+        padding: 10px;
     }
 </style>
 

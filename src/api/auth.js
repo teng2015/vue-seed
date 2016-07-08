@@ -1,10 +1,10 @@
 import request from '../utils/ajax';
 
 export default {
-    login (username, password) {
+    login (userid, password) {
         return request.post('/login', {
             data: {
-                username,
+                userid,
                 password
             }
         });

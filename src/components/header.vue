@@ -2,7 +2,7 @@
     <div class='app-header'>
         <span class='app-header-title'>Class Selector</span>
         <div class='app-greet pull-right mr20'>
-            <span>Welcome, {{user.username || "Student"}} {{time}}</span>
+            <span>Welcome, {{user.username || "Student"}} {{time}} <span class="logout" @click="logout">退出</span></span>
         </div>
     </div>
 </template>
@@ -24,12 +24,17 @@
 
         .app-greet {
             line-height: 50px;
+            .logout {
+                margin-left: 10px;
+                cursor: pointer;
+            }
         }
     }
 </style>
 
 <script>
     import request from '../utils/ajax';
+    import * as u from '../utils/utils';
 
     var getTime = () => {
         let date = new Date(),
@@ -40,12 +45,18 @@
 
     export default {
         props: ['user'],
-        data: function () {
+        data () {
             return {
                 time: getTime()
             };
         },
-        ready: function () {
+        methods: {
+            logout () {
+                u.set_cookie('class_selector_userid', null);
+                this.$route.router.go('login');
+            }
+        },
+        ready () {
             let self = this
             setInterval(() => {
                 self.time = getTime()
