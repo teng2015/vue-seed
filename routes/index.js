@@ -69,4 +69,16 @@ module.exports = function(app) {
             });
         });
     });
+
+    app.get('/api/classDetail/:classid', function (req, res) {
+        console.log('Get Class Detail In Router');
+
+        Class.classDetail(req.params, function (doc) {
+            res.json({
+                error_code: 0,
+                data: doc
+            });
+        });
+    });
+
 };

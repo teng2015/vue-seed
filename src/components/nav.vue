@@ -1,10 +1,10 @@
 <template>
     <div class="left-nav">
         <ul class="item-list mt10">
-            <li class="list-item">
+            <li class="list-item" @click="go('hall')">
                 <a><i class="fa fa-dashboard mr5"></i>选课大厅</a>
             </li>
-            <li class="list-item">
+            <li class="list-item" @click="go('manage')">
                 <a><i class="fa fa-bookmark mr5"></i>已选课程</a>
             </li>
         </ul>
@@ -44,6 +44,11 @@
     export default {
         data () {
             return {}
+        },
+        methods: {
+            go: function (route) {
+                this.$route.router.go('/app/' + route);
+            }
         }
     };
 </script>

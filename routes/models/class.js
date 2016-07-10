@@ -37,4 +37,24 @@ classDao.prototype.classList = function(callback) {
 
 };
 
+classDao.prototype.classDetail = function(info, callback) {
+
+    Class.findOne({id: info.classid}, function (err, doc) {
+
+        if(err) {
+            console.log('查询失败');
+            return;
+        }
+
+        doc = JSON.parse(JSON.stringify(doc));
+
+        callback({
+            data: doc,
+            result: true,
+            msg: "获取课程详情成功"
+        });
+    });
+
+};
+
 module.exports = new classDao();

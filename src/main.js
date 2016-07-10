@@ -8,6 +8,8 @@ import store from './vuex/store';
 /* define components */
 import LoginComponent from './components/login';
 import AppComponent from './components/app';
+import Hall from './components/class_list';
+import Manage from './components/user_class';
 
 require('../public/css/base.less');
 
@@ -35,7 +37,15 @@ var routersMap = {
 	},
     '/app': {
         name: 'index',
-        component: AppComponent
+        component: AppComponent,
+        subRoutes: {
+            '/hall': {
+                component: Hall
+            },
+            '/manage': {
+                component: Manage
+            }
+        }
     }
 };
 

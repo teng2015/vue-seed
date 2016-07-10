@@ -43,7 +43,7 @@
                     {userid, password} = this;
 
                 aa.login(userid, password).then(ret => {
-
+                    console.log(ret);
                     if (ret.result) {
                         u.set_cookie('class_selector_userid', ret.data.id);
 

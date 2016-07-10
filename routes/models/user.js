@@ -12,7 +12,7 @@ var userDao = function() {};
 userDao.prototype.loginByID = function(info, callback) {
     console.log('query user, userid:', info.userid);
 
-    User.findOne({id: info.userid}, function (err, doc) {
+    User.findOne({id: info.userid}, {id: 1, password: 1}, function (err, doc) {
         if(err) {
             console.log('查询失败');
             return;
@@ -20,7 +20,9 @@ userDao.prototype.loginByID = function(info, callback) {
         doc = JSON.parse(JSON.stringify(doc));
         if(doc.password === info.password) {
             callback({
-                data: doc,
+                data: {
+                    id: doc.id
+                },
                 result: true,
                 msg: "登录成功"
             });
