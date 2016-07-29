@@ -1,6 +1,8 @@
 module.exports = {
     cookieSecret: 'class_selector',
     db: 'class_selector',
-    host: 'localhost',
-    port: 27017
+    host: 'ds021915.mlab.com',
+    port: 21915,
+    dbuser: 'sawyer',
+    dbpassword: 'sawyer'
 };

@@ -1,5 +1,5 @@
 var State = require('./models/loginState');
-var User = require('./models/User');
+var User = require('./models/user');
 var Class = require('./models/class');
 
 module.exports = function(app) {

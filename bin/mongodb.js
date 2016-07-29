@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
     settings = require('./settings');
 
-var mongoURI = `mongodb://${settings.host}:${settings.port}/${settings.db}`;
+var mongoURI = `mongodb://${settings.dbuser}:${settings.dbpassword}@${settings.host}:${settings.port}/${settings.db}`;
 
 var MongoDB  = mongoose.connect(mongoURI);
 
